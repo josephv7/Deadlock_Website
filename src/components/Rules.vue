@@ -99,7 +99,6 @@
                         <h4 class="card-title">Hackers, you guys rule.</h4>
                         <h5 class="card-subtitle"></h5>
                         <p class="card-text">Make any attempts and, you will be banned from the game.</p>
-                        
                     </div>
                 </div>
             </div>
@@ -107,13 +106,11 @@
     </div>
 </section>
 <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/static/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
-    
     <div class="container">
         <p class="text-xs-center">Copyright (c) 2017 Razorsharp.</p>
     </div>
 </footer>
 </div>
-
 </template>
 <script>
 export default {
