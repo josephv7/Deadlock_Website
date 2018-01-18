@@ -11,9 +11,7 @@
                     <div class="mbr-section-title display-1"><img src = "/static/images/logo.png" width="50%"/></div><br>
                     <p class="mbr-section-lead lead">Overclock your brain<br>but never rest, unless you're at the top</p><br>
                     <div class="mbr-section-btn"> </div>
-                </div>
-            </div>
-            <div class="text-center col-md-4 col-sm-offset-4 spacing-logo">
+                     <div class="text-center col-md-4 col-sm-offset-4 spacing-logo">
             <!-- login form -->
             <div class="row">
               <button v-on:click="signin" v-bind:class="'btn g-button btn-lg ' + loading"><img src="https://cdn.rawgit.com/firebase/firebaseui-web/master/image/google.svg" viewBox="0 0 60 55" width="25px" /><span class="goog" >Signin with Google</span></button>
@@ -22,6 +20,9 @@
             <!-- errors -->
             <div v-if=response class="text-red"><p>{{value}}</p></div>
           </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -97,21 +98,20 @@ export default {
 .btn-social {
   font-size: 20px;
   border-radius: 50%;
-  padding: 10;
+  padding: 1px;
   width: 44px;
   height: 44px;
   line-height: 44px;
   text-align: center;
   position: relative;
-  border: 2px solid #c0a375;
+  border: 2px solid;
   color: #fff; }
   .btn-social i {
     top: 0;
     line-height: 44px;
     width: 44px; }
   .btn-social:hover {
-    color: #fff;
-    background: #c0a375; }
+    color: #fff; }
   .btn-social + .btn {
     margin-left: 0.1rem; }
 </style>
