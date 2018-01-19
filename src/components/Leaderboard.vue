@@ -1,6 +1,6 @@
 <template>
   <div>
-<section class="engine"></section><section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="background-image: url(assets/images/jumbotron.jpg); padding-top: 150px; padding-bottom: 80px;">
+<section class="engine"></section><section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="background-image: url(/static/images/jumbotron.jpg); padding-top: 150px; padding-bottom: 80px;">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-xs-center">
@@ -30,7 +30,7 @@
         </div>
     </div>
 </section>
-<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/assets/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
+<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/static/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
     
     <div class="container">
         <p class="text-xs-center">Copyright (c) 2017 Razorsharp.</p>
