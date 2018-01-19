@@ -14,7 +14,7 @@ const routes = [
     path: '/leaderboard',
     component: Leaderboard
   }, {
-    path: '/EnterDetails',
+    path: '/enterdetails',
     component: EnterDetails
   }]
 
