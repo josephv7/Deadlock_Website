@@ -7,13 +7,13 @@ import EnterDetails from '@/components/EnterDetails'
 const routes = [
   { path: '/',
     component: Home
-  },{
+  }, {
     path: '/rules',
     component: Rules
-  },{
+  }, {
     path: '/leaderboard',
     component: Leaderboard
-  },{
+  }, {
     path: '/EnterDetails',
     component: EnterDetails
   }]

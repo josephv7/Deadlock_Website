@@ -23,35 +23,40 @@
 
            
 <form action="complete.php" method="POST">
+<p><!-- <?php phpAlert($errmsg); ?> --></p>
+<table class="table table-hover">
+  <tr>
+    <td class="userdetails_text">First Name:</td>
+    <td><input type="text" class="form-control" name="fname" readonly="readonly" value=""></td>
+  </tr>
 
-<p><?php phpAlert($errmsg); ?></p>
-<table class="table table-hover" padding=10101010101010101010px>
-<tr><td class="userdetails_text">First Name:</td><td><input type="text" class="form-control" name="fname" readonly="readonly" value="<?php echo $fname;?>"></input></td></tr>
+  <tr>
+    <td class="userdetails_text">Last Name:</td>
+    <td><input type="text"  class="form-control" name="lname"  readonly="readonly" value=""></td>
+  </tr>
 
-<tr><td class="userdetails_text">Last Name:</td><td><input type="text"  class="form-control" name="lname"  readonly="readonly" value="<?php echo $lname;?>"></input></td></tr>
+  <tr>
+    <td class="userdetails_text">Email:</td>
+    <td><input type="text" class="form-control" name="email" readonly="readonly" value="" ></td>
+  </tr>
 
-<tr><td class="userdetails_text">Email:</td><td><input type="text" class="form-control" name="email" readonly="readonly" value="<?php echo $email;?>" ></input></td></tr>
+  <tr>
+    <td class="userdetails_text">Mobile No:</td><td><input type="text" class="form-control" name="mobno"></td>
+  </tr>
 
-<tr><td class="userdetails_text">Mobile No:</td><td><input type="text" class="form-control" name="mobno"></input></td></tr>
-  <tr><td><label for="sel1" class="userdetails_text">College:</label></td><td>
- <script type="text/javascript">
-function showfield(name){
-  if(name=='Others') { 
-    document.getElementById('div1').innerHTML=' <input type="text"  class="form-control" name="college"/>'; 
-    document.getElementById("sel1").style.display = 'none';
-}
-  else document.getElementById('div1').innerHTML='';
-}
-</script>
-  <select class="form-control" name ="college" id="sel1" onchange="showfield(this.options[this.selectedIndex].value)">
-    <option value = "RSET">RSET</option>
-    <option>Others</option>
-  </select>
-<div id="div1"></div></td></tr>
+  <tr>
+    <td><label for="sel1" class="userdetails_text">College:</label></td>
+    <td><select class="form-control" name ="college" id="sel1">
+      <option value = "RSET">RSET</option>
+      <option>Others</option>
+    </select><div id="div1"></div></td>
+  </tr>
 
-<tr><td></td><td><input type="submit" name="submit" class="col-xs-offset-2 btn btn-raised ripple-effect btn-primary btn-lg"></input></td></tr>
+  <tr>
+    <td></td>
+    <td><input type="submit" name="submit" class="col-xs-offset-2 btn btn-raised ripple-effect btn-primary btn-lg"></td>
+  </tr>
 </table>
-
 </form>
             
             </div>

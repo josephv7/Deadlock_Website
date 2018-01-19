@@ -68,7 +68,7 @@
         <div class="mbr-cards-col col-xs-12 col-lg-4" style="padding-top: 80px; padding-bottom: 80px;">
             <div class="container">
                 <div class="card cart-block">
-                    <div class="card-img iconbox"><i class="fa fa-search fa-3x"   style="padding-top: 27px"aria-hidden="true"></i></div>
+                    <div class="card-img iconbox"><i class="fa fa-search fa-3x" style="padding-top: 27px" aria-hidden="true"></i></div>
                     <div class="card-block">
                         <h4 class="card-title">Google &amp; Wiki they are both our boon and bane!!!!<div><br></div></h4>
                         <h5 class="card-subtitle"></h5>

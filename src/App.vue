@@ -9,7 +9,7 @@
 
                     <div class="navbar-brand">
                         <a href="index.php" class="navbar-logo"><img src="static/images/untitled-130x128.png" alt="Deadlock"></a>
-                        <a class="navbar-caption" href="../index.php"><img width="30%" src = "static/images/logo.png" /></a>
+                        <router-link to="/" class="navbar-caption"><img width="30%" src = "static/images/logo.png" /></router-link>
                     </div>
 
                 </div>
