@@ -19,7 +19,8 @@
                         <div class="hamburger-icon"></div>
                     </button>
 
-                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><router-link class="nav-link link" to="/rules">RULES</router-link></li><li class="nav-item dropdown"><router-link class="nav-link link" to="/leaderboard" aria-expanded="false">LEADERBOARD</router-link></li><li class="nav-item dropdown"><a class="nav-link link" href="https://techksetra18.in/" aria-expanded="false" target="_blank">TECHKSHETRA</a></li></ul>
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><router-link class="nav-link link" to="/rules">RULES</router-link></li><li class="nav-item dropdown"><router-link class="nav-link link" to="/leaderboard" aria-expanded="false">LEADERBOARD</router-link></li><li class="nav-item dropdown"><a class="nav-link link" href="https://techksetra18.in/" aria-expanded="false" target="_blank">TECHKSHETRA</a></li>
+                      <li class="nav-item dropdown"><img class="user-img" v-if="user" :src="user.photoURL"></li></ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                         <div class="close-icon"></div>
                     </button>
@@ -36,8 +37,15 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+require('firebase/firestore')
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    user: function () {
+      return firebase.auth().currentUser
+    }
+  }
 }
 </script>
 
@@ -48,5 +56,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.user-img {
+  width:2rem;
+  border-radius: 1rem;
 }
 </style>

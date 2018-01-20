@@ -1,7 +1,7 @@
 import Home from '@/components/Home'
 import Rules from '@/components/Rules'
 import Leaderboard from '@/components/Leaderboard'
-import EnterDetails from '@/components/EnterDetails'
+import EnterDetails from '@/components/user/EnterDetails'
 
 
 const routes = [
