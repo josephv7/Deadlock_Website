@@ -32,6 +32,45 @@ var router = new VueRouter({
   }
 })
 
+
+router.beforeEach((to, from, next) => {
+  let currentUser = firebase.auth().currentUser
+  if (!store.getters.getUser && currentUser) {
+    currentUser.isAdmin = false
+    store.commit('SET_USER', currentUser)
+  }
+  let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  // let details = to.matched.some(record => record.meta.details)
+  // let requireAdmin = to.matched.some(record => record.meta.requireAdmin)
+  // console.log(to.fullPath)
+  if (requiresAuth && !currentUser) {
+    next({
+      path: '/',
+      query: {redirect: to.fullPath}
+    })
+  } else if (currentUser) {
+    firebase.firestore().collection('users').doc(currentUser.uid).get()
+    .then((doc) => {
+      if (doc.exists) {
+        if (to.fullPath === '/user/enterdetails') {
+          next({
+            path: '/user/dashboard'
+          })
+        } else {
+          next()
+        }
+      } else {
+        next({
+          path: '/user/enterdetails',
+          query: {redirect: to.fullPath}
+        })
+      }
+    })
+  } else {
+    next()
+  }
+})
+
 /* eslint-disable no-new */
 sync(store, router)
 

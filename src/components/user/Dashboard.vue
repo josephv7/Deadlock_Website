@@ -24,9 +24,11 @@
   font-weight: 700; 
   font-family: 'Montserrat'
   sans-serif; color: '#00964d';
-  letter-spacing: -1px;">1 //TODO TANK</span></div></div>
+  letter-spacing: -1px;">1 
+<!-- //TODO TANK -->
+</span></div></div>
  
-    <div class="container" style=" padding-bottom: 70px; " >
+    <div v-if="!question" class="container" style=" padding-bottom: 70px; " >
     <div class="row">
 
             <div class="mbr-table-md-up">
@@ -38,11 +40,11 @@
                   <div class="mbr-figure"><img src="/static/images/meme1.jpg" class="img-rounded" alt=" Image appears here "></div>
               </div>
               </div>
-  <div class="container">
+  <div v-else class="container">
         <div class="row">
             <div class="mbr-table-md-up">
 
-              <div class="mbr-table-cell mbr-right-padding-md-up mbr-valign-top col-md-7 image-size" style="width: 50%;">
+              <div  class="mbr-table-cell mbr-right-padding-md-up mbr-valign-top col-md-7 image-size" style="width: 50%;">
                   <div class="mbr-figure"><img src="https://cdn.lynda.com/course/587870/587870-636311357325845786-16x9.jpg" class="img-rounded myImg" alt=" Image appears here "></div>
               </div>
 
@@ -77,6 +79,11 @@
     name: 'userDashboard',
     data: function () {
       return {
+      }
+    },
+    computed: {
+      question: function () {
+        return null
       }
     },
     mounted () {

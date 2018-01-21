@@ -2,12 +2,13 @@ import Home from '@/components/Home'
 import Rules from '@/components/Rules'
 import Leaderboard from '@/components/Leaderboard' 
 import userDash from '@/components/userDash'
+import NotFoundView from '@/components/404.vue'
 import EnterDetails from '@/components/user/EnterDetails'
 import userDashboard from '@/components/user/Dashboard'
 
 
 const routes = [
-  { path: '/home',
+  { path: '/',
     component: Home
   }, {
     path: '/rules',
@@ -27,6 +28,11 @@ const routes = [
           component: userDashboard
         }
     ]
-  }]
+  }, {
+    // not found handler
+    path: '*',
+    component: NotFoundView
+  }
+  ]
 
 export default routes

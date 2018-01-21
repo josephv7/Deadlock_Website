@@ -82,6 +82,7 @@ export default {
           // var token = result.credential.accessToken
           // The signed-in user info.
           console.log('user logged in')
+          this.$router.replace('/user/dashboard')
           // firebase.firestore().doc(`users/${result.user.uid}`).get()
           // .then((doc) => {
           //   var user = result.user

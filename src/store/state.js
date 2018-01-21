@@ -1,10 +1,11 @@
 export default {
 	config: {
-		apiKey: 'AIzaSyC7P3DLKzKUwT2CKhBsjik75VR4-lzpXQI',
-		authDomain: 'projectm1-94d36.firebaseapp.com',
-		databaseURL: 'https://projectm1-94d36.firebaseio.com',
-		projectId: 'projectm1-94d36',
-		storageBucket: 'projectm1-94d36.appspot.com',
-		messagingSenderId: '200497519300'
-	}
+		apiKey: 'AIzaSyB9ejvIGTmvQ3tGPBUovICpnJaP5bFYSEs',
+		authDomain: 'tourist-23bb8.firebaseapp.com',
+		databaseURL: 'https://tourist-23bb8.firebaseio.com',
+		projectId: 'tourist-23bb8',
+		storageBucket: 'tourist-23bb8.appspot.com',
+		messagingSenderId: '222315734307'
+	},
+	user: null
 }

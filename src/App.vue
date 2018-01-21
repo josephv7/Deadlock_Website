@@ -21,7 +21,7 @@
 
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><router-link class="nav-link link" to="/rules">RULES</router-link></li><li class="nav-item dropdown"><router-link class="nav-link link" to="/leaderboard" aria-expanded="false">LEADERBOARD</router-link></li><li class="nav-item dropdown"><a class="nav-link link" href="https://techkshetra18.in/" aria-expanded="false" target="_blank">TECHKSHETRA</a></li>
                       <li class="nav-item dropdown">
-                        <a class="nav-link btn btn-white btn-white-outline top-button" href="logout.php"><img class="user-img" v-if="user" :src="user.photoURL"> LOG OUT</a>
+                        <a v-if="user" class="nav-link btn btn-white btn-white-outline top-button" v-on:click="logout"><img class="user-img" :src="user.photoURL"> LOG OUT</a>
                         </li></ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                         <div class="close-icon"></div>
@@ -43,9 +43,23 @@ import firebase from 'firebase'
 require('firebase/firestore')
 export default {
   name: 'App',
+  data: function () {
+    return {
+
+    }
+  },
   computed: {
     user: function () {
-      return firebase.auth().currentUser
+      console.log(firebase.auth().currentUser)
+      return this.$store.getters.getUser
+    }
+  },
+  methods: {
+    logout: function () {
+      firebase.auth().signOut().then(() => {
+        this.$store.commit('SET_USER', null)
+        this.$router.replace('/')
+      })
     }
   }
 }

@@ -22,39 +22,41 @@
             <div class="col-xs-12 lead">
 
            
-<form action="complete.php" method="POST">
-<p><!-- <?php phpAlert($errmsg); ?> --></p>
+<form v-on:submit.prevent="onSubmit">
 <table class="table table-hover">
   <tr>
-    <td class="userdetails_text">First Name:</td>
-    <td><input type="text" class="form-control" name="fname" readonly="readonly" value=""></td>
-  </tr>
-
-  <tr>
-    <td class="userdetails_text">Last Name:</td>
-    <td><input type="text"  class="form-control" name="lname"  readonly="readonly" value=""></td>
+    <td class="userdetails_text">Name:</td>
+    <td><input type="text" v-model="displayName" class="form-control" name="fname" readonly="readonly" value=""></td>
   </tr>
 
   <tr>
     <td class="userdetails_text">Email:</td>
-    <td><input type="text" class="form-control" name="email" readonly="readonly" value="" ></td>
+    <td><input type="text" v-model="email" class="form-control" name="email" readonly="readonly" value="" ></td>
   </tr>
 
   <tr>
-    <td class="userdetails_text">Mobile No:</td><td><input type="text" class="form-control" name="mobno"></td>
+    <td class="userdetails_text">Mobile No:</td><td><input type="text" v-model="mobno" class="form-control" name="mobno"></td>
   </tr>
 
   <tr>
+    <td class="userdetails_text">Address:</td><td><input type="text" v-model="address" class="form-control" name="mobno"></td>
+  </tr>
+
+  <tr v-if="rset">
     <td><label for="sel1" class="userdetails_text">College:</label></td>
-    <td><select class="form-control" name ="college" id="sel1">
+    <td><select v-model="college" class="form-control" name ="college" id="sel1">
       <option value = "RSET">RSET</option>
-      <option>Others</option>
+      <option value="others">Others</option>
     </select><div id="div1"></div></td>
+  </tr>
+  <tr v-else>
+    <td><label for="sel1" class="userdetails_text">College:</label></td>
+    <td><input type="text" v-model="college" class="form-control" name="college"/></td>
   </tr>
 
   <tr>
     <td></td>
-    <td><input type="submit" name="submit" class="col-xs-offset-2 btn btn-raised ripple-effect btn-primary btn-lg"></td>
+    <td><input type="submit" name="submit" value="Submit" class="col-xs-offset-2 btn btn-raised ripple-effect btn-primary btn-lg"></td>
   </tr>
 </table>
 </form>
@@ -65,7 +67,7 @@
 
 </section>
 
-<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/assets/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
+<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/static/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
     
     <div class="container">
         <p class="text-xs-center">Copyright (c) 2017 Razorsharp.</p>
@@ -78,13 +80,48 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+require('firebase/firestore')
   export default {
     name: 'EnterDetails',
     data: function () {
       return {
-        firstName: null,
-        lastName: null,
-        email: null
+        displayName: null,
+        email: null,
+        mobno: null,
+        college: null,
+        address: null,
+        rset: true,
+        currentUser: null
+      }
+    },
+    methods: {
+      onSubmit: function () {
+        firebase.firestore().collection('users').doc(this.currentUser.uid).set({
+          displayName: this.displayName,
+          email: this.email,
+          mobno: this.mobno,
+          college: this.college,
+          address: this.address,
+          photoURL: this.currentUser.photoURL
+        }).then((success) => {
+          console.log('Successfully registered')
+        })
+      }
+    },
+    mounted () {
+      this.currentUser = firebase.auth().currentUser
+      this.displayName = this.currentUser.displayName
+      this.email = this.currentUser.email
+      // this.firstName = currentUser.firstName
+    },
+    watch: {
+      college: function (val) {
+        if (val !== 'RSET') {
+          this.rset = false
+        } else if (val === 'others') {
+          this.college = null
+        }
       }
     }
   }
