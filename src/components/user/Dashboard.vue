@@ -149,7 +149,7 @@ require('firebase/firestore')
             }
           }
         })
-      firebase.firestore().collection('leaderboard').orderBy('currentLevel', 'desc').orderBy('timestamp').limit(100).onSnapshot((querySnapshot) => {
+      firebase.firestore().collection('leaderboard').orderBy('currentLevel', 'desc').orderBy('timestamp').onSnapshot((querySnapshot) => {
           var rank = 1
           querySnapshot.forEach((doc) => {
             if (this.getUser.displayName === doc.data().displayName) {
