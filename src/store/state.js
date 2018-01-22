@@ -7,5 +7,7 @@ export default {
 		storageBucket: 'tourist-23bb8.appspot.com',
 		messagingSenderId: '222315734307'
 	},
-	user: null
+	user: null,
+	currentHash: null,
+	previousHash: null
 }

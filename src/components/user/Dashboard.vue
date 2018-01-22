@@ -45,7 +45,7 @@
             <div class="mbr-table-md-up">
 
               <div  class="mbr-table-cell mbr-right-padding-md-up mbr-valign-top col-md-7 image-size" style="width: 50%;">
-                  <div class="mbr-figure"><img src="https://cdn.lynda.com/course/587870/587870-636311357325845786-16x9.jpg" class="img-rounded myImg" alt=" Image appears here "></div>
+                  <div class="mbr-figure"><img :src="question.photoURL" class="img-rounded myImg" alt=" Image appears here "></div>
               </div>
 
          
@@ -55,11 +55,11 @@
                   <h3 class="mbr-section-title display-2" style="font-size: 2rem;">THINK FOR AN ANSWER</h3>
                   <div class="lead">
 <p>
-                  <input class ="form-control" type="text" id="anstxt"></p>
+                  <input class ="form-control" type="text" v-model="answer" id="anstxt"></p>
 
                   </div>
 
-                  <div><button id="buttonsubmit" type="button" onclick = "sbmt_answer();" class="btn btn-lg btn-info"> Submit Answer</button></div>
+                  <div><button id="buttonsubmit" type="button" v-on:click="calchas" class="btn btn-lg btn-info"> Submit Answer</button></div>
               </div>             
 
             </div>
@@ -75,19 +75,39 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+import { mapGetters } from 'vuex'
+import sha256 from 'crypto-js/sha256'
+require('firebase/firestore')
   export default {
     name: 'userDashboard',
     data: function () {
       return {
+        question: null,
+        answer: null
       }
     },
     computed: {
-      question: function () {
-        return null
+      ...mapGetters([
+          'getCurrentHash',
+          'getPreviousHash'
+        ])
+    },
+    methods: {
+      calchas: function () {
+        console.log(sha256(this.answer + '' + this.question.photoURL + '' + this.getCurrentHash).toString())
       }
     },
     mounted () {
       console.log('mounted dashboard')
+      firebase.firestore().collection('q').doc('questions').collection(this.getCurrentHash).doc(this.getPreviousHash).get().then((doc) => {
+          if (doc.data().photoURL) {
+            this.question = {
+              photoURL: doc.data().photoURL,
+              previousHash: doc.data().id
+            }
+          }
+        })
     }
   }
 </script>

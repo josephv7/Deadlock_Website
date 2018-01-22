@@ -52,6 +52,8 @@ router.beforeEach((to, from, next) => {
     firebase.firestore().collection('users').doc(currentUser.uid).get()
     .then((doc) => {
       if (doc.exists) {
+        store.commit('SET_CURRENT_HASH', doc.data().currentHash)
+        store.commit('SET_PREVIOUS_HASH', doc.data().previousHash)
         if (to.fullPath === '/user/enterdetails') {
           next({
             path: '/user/dashboard'

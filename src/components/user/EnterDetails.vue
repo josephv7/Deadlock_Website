@@ -103,7 +103,9 @@ require('firebase/firestore')
           mobno: this.mobno,
           college: this.college,
           address: this.address,
-          photoURL: this.currentUser.photoURL
+          photoURL: this.currentUser.photoURL,
+          currentHash: 'afdgdfagsfjsfgsfg',
+          previousHash: 'agadgagdgadfdsdfs'
         }).then((success) => {
           console.log('Successfully registered')
         })
