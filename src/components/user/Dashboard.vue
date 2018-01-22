@@ -40,8 +40,7 @@
   font-weight: 700; 
   font-family: 'Montserrat'
   sans-serif; color: '#c13a48';
-  letter-spacing: -1px;">1 
-<!-- //TODO TANK -->
+  letter-spacing: -1px;">{{rank}}
 </span></div></div>
  
     <div v-if="!question.photoURL" class="container" style=" padding-bottom: 70px; " >
@@ -103,13 +102,16 @@ require('firebase/firestore')
         question: {
           photoURL: null
         },
-        answer: null
+        answer: null,
+        rank: null,
+        level: null
       }
     },
     computed: {
       ...mapGetters([
           'getCurrentHash',
-          'getPreviousHash'
+          'getPreviousHash',
+          'getUser'
         ]),
       currentUser: () => firebase.auth().currentUser
     },
@@ -147,6 +149,16 @@ require('firebase/firestore')
             }
           }
         })
+      firebase.firestore().collection('leaderboard').orderBy('currentLevel', 'desc').orderBy('timestamp').limit(100).onSnapshot((querySnapshot) => {
+          var rank = 1
+          querySnapshot.forEach((doc) => {
+            if (this.getUser.displayName === doc.data().displayName) {
+              this.rank = rank
+              this.level = doc.data().currentLevel
+            }
+            rank = rank + 1
+          })
+      })
     }
   }
 </script>
