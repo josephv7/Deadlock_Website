@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import swal from 'sweetalert'
 import firebase from 'firebase'
 import { mapGetters } from 'vuex'
 import sha256 from 'crypto-js/sha256'
@@ -95,7 +96,21 @@ require('firebase/firestore')
     },
     methods: {
       calchas: function () {
-        console.log(sha256(this.answer + '' + this.question.photoURL + '' + this.getCurrentHash).toString())
+        var hash = sha256(this.answer + '' + this.question.photoURL + '' + this.getCurrentHash).toString()
+        console.log(hash)
+        firebase.firestore().collection('q').doc('questions').collection(hash).doc(this.getCurrentHash).get().then((doc) => {
+          if (doc.exists) {
+            swal('Good job!', 'Correct Answer !', 'success')
+            this.$store.commit('SET_PREVIOUS_HASH', this.getCurrentHash)
+            this.$store.commit('SET_CURRENT_HASH', hash)
+            this.question = {
+              photoURL: doc.data().photoURL,
+              previousHash: doc.data().id
+            }
+          } else {
+            swal('Sorry', 'Wrong Answer!!', 'error')
+          }
+        })
       }
     },
     mounted () {
