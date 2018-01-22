@@ -28,7 +28,7 @@
 <!-- //TODO TANK -->
 </span></div></div>
  
-    <div v-if="!question" class="container" style=" padding-bottom: 70px; " >
+    <div v-if="!question.photoURL" class="container" style=" padding-bottom: 70px; " >
     <div class="row">
 
             <div class="mbr-table-md-up">
@@ -84,7 +84,9 @@ require('firebase/firestore')
     name: 'userDashboard',
     data: function () {
       return {
-        question: null,
+        question: {
+          photoURL: null
+        },
         answer: null
       }
     },
@@ -92,14 +94,20 @@ require('firebase/firestore')
       ...mapGetters([
           'getCurrentHash',
           'getPreviousHash'
-        ])
+        ]),
+      currentUser: () => firebase.auth().currentUser
     },
     methods: {
       calchas: function () {
         var hash = sha256(this.answer + '' + this.question.photoURL + '' + this.getCurrentHash).toString()
-        console.log(hash)
         firebase.firestore().collection('q').doc('questions').collection(hash).doc(this.getCurrentHash).get().then((doc) => {
           if (doc.exists) {
+            firebase.firestore().collection('users').doc(this.currentUser.uid).update({
+              currentHash: hash,
+              previousHash: this.getCurrentHash
+            }).then((success) => {
+              
+            })
             swal('Good job!', 'Correct Answer !', 'success')
             this.$store.commit('SET_PREVIOUS_HASH', this.getCurrentHash)
             this.$store.commit('SET_CURRENT_HASH', hash)

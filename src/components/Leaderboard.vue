@@ -1,9 +1,29 @@
 <template>
-  <div>
-<section class="engine"></section><section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="background-image: url(/static/images/jumbotron.jpg); padding-top: 150px; padding-bottom: 80px;">
+  <div style="background-color: black;">
+<section class="engine"></section>
+<vue-particles
+        color="#c13a48"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#c13a48"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+        style="height:30rem;"
+         >
+      </vue-particles>
+      <section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="  position: absolute; top:10%; right:40%;">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-xs-center">
+            <div class="col-md-12 text-xs-center">
                 <h3 class="mbr-section-title display-4">LEADERBOARD</h3>
                 <div class="lead"><p>Don't rest until you climb to the top..!!.</p></div>
  </div>
@@ -18,7 +38,7 @@
      
 <table class="table table-hover">
 
-  <thead style="color: #00964d;">
+  <thead style="color: #C32E45;">
     <tr><th>Rank</th><th>Name</th><th>College</th><th>Level</th></tr>
   </thead>
   <tbody>

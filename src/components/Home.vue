@@ -1,5 +1,23 @@
 <template >
-<div>
+<div style="background-color: black;">
+  <vue-particles
+        color="#c13a48"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#c13a48"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+         >
+      </vue-particles>
 <section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow mbr-after-navbar section-2" id="header1-1">
 
     <div class="mbr-table-cell">
@@ -8,13 +26,18 @@
             <div class="row">
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
-                    <div class="mbr-section-title display-1"><img src = "/static/images/logo.png" width="50%"/></div><br>
+                    <div class="mbr-section-title display-1"><img src = "/static/images/d_text.svg" width="50%"/></div><br>
                     <p class="mbr-section-lead lead">Overclock your brain<br>but never rest, unless you're at the top</p><br>
                     <div class="mbr-section-btn"> </div>
                      <div class="text-center col-md-4 col-sm-offset-4 spacing-logo">
             <!-- login form -->
-            <div class="row">
+            <div v-if="!currentUser" class="row">
               <button v-on:click="signin" v-bind:class="'btn g-button btn-lg ' + loading"><img src="https://cdn.rawgit.com/firebase/firebaseui-web/master/image/google.svg" viewBox="0 0 60 55" width="25px" /><span class="goog" >Signin with Google</span></button>
+          </div>
+          <div v-else class="row">
+            <router-link to="/user/dashboard">
+              <button v-bind:class="'btn g-button btn-lg ' + loading"><span class="goog" >Play Now </span></button>
+                </router-link>
           </div>
 
             <!-- errors -->
@@ -36,7 +59,7 @@
         <div class="lead"><p class="display-4" style="color:#ffffff;">An exciting online treasure hunt</p></div>
     </div>
 </section>
-<section class="mbr-section mbr-section-md-padding mbr-parallax-background section-2 " id="social-buttons2-1">
+<section class="mbr-section mbr-section-md-padding mbr-parallax-background section-3  " id="social-buttons2-1">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-xs-center">
@@ -65,6 +88,11 @@ export default {
     return {
       loading: '',
       response: ''
+    }
+  },
+  computed: {
+    currentUser: function () {
+      return this.$store.getters.getUser
     }
   },
   methods: {
@@ -121,12 +149,17 @@ export default {
 </script>
 
 <style>
-.section-2 {
+.section-3 {
   background: url('/static/images/jumbotron.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.section-2 {
+  position: absolute;
+  top:10%;
 }
 
 .section-3 {

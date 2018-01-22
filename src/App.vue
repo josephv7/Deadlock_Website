@@ -8,8 +8,7 @@
                 <div class="mbr-table-cell">
 
                     <div class="navbar-brand">
-                        <router-link to="/" class="navbar-logo"><img src="static/images/untitled-130x128.png" alt="Deadlock"></router-link>
-                        <router-link to="/" class="navbar-caption"><img width="30%" src = "static/images/logo.png" /></router-link>
+                        <router-link to="/" class="navbar-logo"><img src="/static/images/deadlock_icon.svg" alt="Deadlock"></router-link>
                     </div>
 
                 </div>

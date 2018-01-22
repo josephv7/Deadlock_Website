@@ -1,9 +1,28 @@
 <template>
-	<div>
-	<section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="background-image: url(/static/images/jumbotron.jpg); padding-top: 140px; padding-bottom: 100px;">
+	<div style="background-color: black;">
+        <vue-particles
+        color="#c13a48"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#c13a48"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+        style="height:30rem;"
+         >
+      </vue-particles>
+	<section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="position: absolute; top:10%; right:45%;">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-xs-center">
+            <div class="col-md-12 text-xs-center">
                 <h3 class="mbr-section-title display-2">Rules</h3>
                 <div class="lead"><p></p></div>
  </div>
@@ -127,5 +146,9 @@ export default {
 <style>
 	.fa {
     padding: 20px 0 4px 5px;
+    }
+
+    .card-title {
+        color: #C32E45 !important;
     }
 </style>

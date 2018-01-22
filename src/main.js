@@ -6,11 +6,12 @@ import routes from './router/routes'
 import { sync } from 'vuex-router-sync'
 import store from './store'
 import AppView from './App.vue'
+import VueParticles from 'vue-particles'
 
 import firebase from 'firebase'
 require('firebase/firestore')
 
-
+Vue.use(VueParticles)
 
 Vue.config.productionTip = false
 
