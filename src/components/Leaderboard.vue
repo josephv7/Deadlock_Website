@@ -32,7 +32,7 @@
 </section> 
 <section class="mbr-section-full article mbr-section__container" id="content1-b" style="background-color: rgb(255, 255, 255); padding-top: 20px; padding-bottom: 20px; ">
 
-    <div class="container col-md-offset-1 ">
+    <div class="container col-md-offset-2 ">
         <div class="row">
             <div class="col-xs-12 col-md-12 table-responsive">
      
@@ -42,7 +42,7 @@
     <tr><th>Rank</th><th>Name</th><th>College</th><th>Level</th></tr>
   </thead>
   <tbody>
-
+  <tr v-for="(lead,key) in leaderboard" v-bind:key="key"><td>{{key+1}}</td><td>{{lead.name}}</td><td>{{lead.college}}</td><td>{{lead.level}}</td></tr>
   </tbody>
 </table>
        
@@ -64,3 +64,31 @@
 
   </div>
 </template>
+
+<script>
+import firebase from 'firebase'
+require('firebase/firestore')
+export default {
+  data: function () {
+    return {
+      leaderboard: []
+    }
+  },
+  mounted () {
+    firebase.firestore().collection('leaderboard').orderBy('currentLevel', 'desc').orderBy('timestamp').limit(100).onSnapshot((querySnapshot) => {
+        var lead = []
+        var rank = 1
+        querySnapshot.forEach(function (doc) {
+          lead.push({
+            rank: rank,
+            name: doc.data().displayName,
+            college: doc.data().college,
+            level: doc.data().currentLevel
+          })
+          rank = rank + 1
+        })
+        this.leaderboard = lead
+    })
+  }
+}
+</script>
