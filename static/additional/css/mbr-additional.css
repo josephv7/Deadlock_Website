@@ -97,12 +97,12 @@ h6,
 }
 
 .userdetails_text {
-  color: #00964d; 
+  color: #c13a48; 
   font-weight: 600;  
 }
 .btn-primary {
-  background-color: #00964d;
-  border-color: #00964d;
+  background-color: #c13a48;
+  border-color: #c13a48;
   color: #ffffff;
 }
 .btn-primary:hover,
@@ -141,8 +141,8 @@ h6,
   border-color: #94ada8 !important;
 }
 .btn-info {
-  background-color: #00964d;
-  border-color: #00964d;
+  background-color: #c13a48;
+  border-color: #c13a48;
   color: #ffffff;
 }
 .btn-info:hover,
@@ -376,8 +376,8 @@ h6,
   border-color: #fff;
 }
 .btn-social:hover {
-  background: #00964d;
-  border-color: #00964d;
+  background: #c13a48;
+  border-color: #c13a48;
 }
 .mbr-company .list-group-item.active .list-group-text {
   color: #2969b0;

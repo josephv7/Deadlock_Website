@@ -389,8 +389,8 @@
     border-color: #fff; }
   .btn-white-outline:hover {
     color: #fff;
-    background-color: #00964d;
-    border-color: #00964d; }
+    background-color: #c13a48;
+    border-color: #c13a48; }
   .btn-white-outline.disabled, .btn-white-outline:disabled {
     color: #535353 !important;
     background-color: #fff !important;
@@ -1258,7 +1258,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   margin-bottom: 0;
   font-size: 1.25rem;
   font-weight: bold;
-  color: #00964d;
+  color: #c13a48;
   letter-spacing: -1px;
   line-height: 1.2825; }
   .mbr-cards .card-title + * {
