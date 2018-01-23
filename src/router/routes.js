@@ -5,7 +5,7 @@ import userDash from '@/components/userDash'
 import NotFoundView from '@/components/404.vue'
 import EnterDetails from '@/components/user/EnterDetails'
 import userDashboard from '@/components/user/Dashboard'
-
+import adminDashboard from '@/components/admin/Dashboard'
 
 const routes = [
   { path: '/',
@@ -32,6 +32,9 @@ const routes = [
     // not found handler
     path: '*',
     component: NotFoundView
+  }, {
+    path: '/admin',
+    component: adminDashboard
   }
   ]
 

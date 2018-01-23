@@ -174,7 +174,7 @@ export default {
 }
 
 .btn-social {
-  font-size: 20px;
+  font-size: 23px;
   border-radius: 50%;
   padding: 1px;
   width: 44px;
