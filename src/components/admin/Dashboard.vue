@@ -23,37 +23,60 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-xs-center">
-                <h3 class="mbr-section-title display-2">Admin Panel</h3>
+                <h3 class="mbr-section-title display-2">Overclock your Brain</h3>
                 <div class="lead"><p></p></div>
  </div>
         </div>
     </div>
 </section> 
-
-<section class="mbr-section" id="msg-box5-h" style="background-color: rgb(255, 255, 255); padding-top: 25px; padding-bottom: 120px;">
-  <div v-if="data">
-    // content for admin access
+<section class="mbr-section" id="msg-box5-h" style="background-color: rgb(255, 255, 255); padding-top: 25px; padding-bottom: 30rem;">
+  <div v-if="adminData.currentHash" class="container">
+    <div class="col-md-6 lead">
+      <h1>&nbsp;Upload Question</h1>
+    <form v-on:submit.prevent="onSubmit">
+<table class="table table-hover">
+  <tr>
+    <td class="userdetails_text">Photo URL :</td>
+    <td><input type="text" v-model="adminData.photourl" class="form-control" name="fname"  value=""></td>
+  </tr>
+  <tr>
+    <td class="userdetails_text">Answer :</td>
+    <td><input type="text" v-model="adminData.answer" class="form-control" name="fname"  value=""></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input type="submit" name="submit" value="Calculate Hash" class="col-xs-offset-2 btn btn-raised ripple-effect btn-primary btn-lg"></td>
+  </tr>
+</table>
+</form>
+</div>
+<div class="col-md-6">
+  <h1>&nbsp; Logs </h1>
+</div>
   </div>
   <div v-else>
     // content for no admin access
   </div>
 </section>
-<footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/static/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
-    
-    <div class="container">
-        <p class="text-xs-center">Copyright (c) 2017 Razorsharp.</p>
-    </div>
-</footer></div>
+</div>
 </template>
 
 <script>
 import firebase from 'firebase'
+import swal from 'sweetalert'
 import { mapGetters } from 'vuex'
+import sha256 from 'crypto-js/sha256'
+require('firebase/firestore')
 export default {
   name: 'adminDashboard',
   data: function () {
     return {
-      data: 1
+      adminData: {
+        currentHash: null,
+        photourl: null,
+        answer: null,
+        nextHash: null
+      }
     }
   },
   computed: {
@@ -65,10 +88,19 @@ export default {
     currentUser: () => firebase.auth().currentUser
   },
   methods: {
-      
+      onSubmit: function () {
+        this.adminData.nextHash = sha256(this.adminData.answer + '' + this.adminData.photourl + '' + this.adminData.CurrentHash).toString()
+        swal('Hashed', this.adminData.nextHash, 'success')
+      }
   },
   mounted () {
-    
+    firebase.firestore().collection('latest').doc('updateMe').get().then((doc) => {
+      this.adminData.currentHash = doc.data().currentHash
+    })
   }
 }
 </script>
+
+<style>
+  
+</style>
