@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-xs-center">
-                <h3 class="mbr-section-title display-2">Overclock your Brain</h3>
+                <h3 class="mbr-section-title display-2">Enter Details</h3>
                 <div class="lead"><p></p></div>
  </div>
         </div>
