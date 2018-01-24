@@ -35,10 +35,6 @@
     <td required class="userdetails_text">Mobile No:</td><td><input type="text" v-model="mobno" class="form-control" name="mobno"></td>
   </tr>
 
-  <tr>
-    <td  required class="userdetails_text">Address:</td><td><input type="text" v-model="address" class="form-control" name="mobno"></td>
-  </tr>
-
   <tr v-if="rset">
     <td><label for="sel1" class="userdetails_text">College:</label></td>
     <td><select required v-model="college" class="form-control" name ="college" id="sel1">
@@ -81,7 +77,6 @@ require('firebase/firestore')
         email: null,
         mobno: null,
         college: null,
-        address: null,
         rset: true,
         currentUser: null
       }
@@ -93,7 +88,6 @@ require('firebase/firestore')
           email: this.email,
           mobno: this.mobno,
           college: this.college,
-          address: this.address,
           photoURL: this.currentUser.photoURL,
           currentLevel: 0,
           currentHash: 'dd4afcb2dcb9a1f9e93348f2c49a9fee3e3a79936ed86760cc15b87be47cbe23',
