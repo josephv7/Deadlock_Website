@@ -1,6 +1,6 @@
 <template  >
 <div>
-<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow mbr-after-navbar section-2" id="header1-1">
+<section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow mbr-after-navbar section-2"  id="header1-1">
 
     <div class="mbr-table-cell">
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-  <section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8">
+  <section class="mbr-section article mbr-parallax-background mbr-after-navbar"  style="padding-top: 10rem; padding-bottom: 5rem;" id="msg-box8-8">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-xs-center">
