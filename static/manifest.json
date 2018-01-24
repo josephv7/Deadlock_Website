@@ -1,0 +1,26 @@
+{
+  "short_name": "Deadlock",
+  "name": "Deadlock",
+  "icons": [
+    {
+      "src": "/static/images/icon_96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/icon_144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/images/icon_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#C32E45",
+  "theme_color" : "#C32E45",
+  "orientation": "portrait"
+}
