@@ -109,15 +109,16 @@ require('firebase/firestore')
           'getCurrentLevel',
           'getPhone'
         ]),
-      currentUser: () => firebase.auth().currentUser
+      currentUser: () => firebase.auth().currentUser,
+      ans: function () { return this.answer.toLowerCase().replace(/\s/g, '') }
     },
     methods: {
       calchas: function () {
-        var hash = sha256(this.answer + '' + this.question.photoURL + '' + this.getCurrentHash).toString()
+        var hash = sha256(this.ans + '' + this.question.photoURL + '' + this.getCurrentHash).toString()
         firebase.firestore().collection('logs').add({
           UID: this.getUser.uid,
           displayName: this.getUser.displayName,
-          answer: this.answer.toLowerCase(),
+          answer: this.ans,
           currentLevel: parseInt(this.getCurrentLevel),
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           email: this.getUser.email,
