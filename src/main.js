@@ -41,11 +41,14 @@ router.beforeEach((to, from, next) => {
     currentUser.isAdmin = false
     store.commit('SET_USER', currentUser)
   }
+  // console.log(to.fullPath)
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   // let details = to.matched.some(record => record.meta.details)
   // let requireAdmin = to.matched.some(record => record.meta.requireAdmin)
   // console.log(to.fullPath)
-  if (requiresAuth && !currentUser) {
+  if (!requiresAuth) {
+    next()
+  } else if (requiresAuth && !currentUser) {
     next({
       path: '/',
       query: {redirect: to.fullPath}
@@ -76,11 +79,18 @@ router.beforeEach((to, from, next) => {
           next()
         }
       } else {
-        next({
-          path: '/user/enterdetails',
-          query: {redirect: to.fullPath}
-        })
+        console.log(to.fullPath)
+        if (to.fullPath === '/user/enterdetails') {
+            next()
+        } else {
+            next({
+              path: '/user/enterdetails'
+            })
+        }
       }
+    })
+    .catch((error) => {
+      console.log('error' + error)
     })
   } else {
     next()

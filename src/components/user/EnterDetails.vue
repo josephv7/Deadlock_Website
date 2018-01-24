@@ -99,7 +99,7 @@ require('firebase/firestore')
           currentHash: 'dd4afcb2dcb9a1f9e93348f2c49a9fee3e3a79936ed86760cc15b87be47cbe23',
           previousHash: '16d63cfb10cbe791c4502c6d4af173462a43785d6cfedfa5e931115e006abd9e'
         }).then((success) => {
-          console.log('Successfully registered')
+          this.$router.replace('/user/dashboard')
         })
       }
     },

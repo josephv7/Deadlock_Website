@@ -23,7 +23,6 @@
           </div>
 
             <!-- errors -->
-            <div v-if=response class="text-red"><p>{{value}}</p></div>
           </div>
                 </div>
 
