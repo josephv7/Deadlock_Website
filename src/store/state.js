@@ -11,5 +11,6 @@ export default {
 	currentHash: null,
 	previousHash: null,
 	currentLevel: null,
-	phno: null
+	phno: null,
+	logo: '/static/images/deadlock_icon.svg'
 }

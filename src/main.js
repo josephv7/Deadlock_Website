@@ -46,54 +46,60 @@ router.beforeEach((to, from, next) => {
   // let details = to.matched.some(record => record.meta.details)
   // let requireAdmin = to.matched.some(record => record.meta.requireAdmin)
   // console.log(to.fullPath)
-  if (!requiresAuth) {
+  if (to.fullPath === '/') {
+    store.commit('SET_LOGO', '/static/images/deadlock_icon.svg')
     next()
-  } else if (requiresAuth && !currentUser) {
-    next({
-      path: '/',
-      query: {redirect: to.fullPath}
-    })
-  } else if (currentUser) {
-    firebase.firestore().collection('users').doc(currentUser.uid).get()
-    .then((doc) => {
-      if (doc.exists) {
-        store.commit('SET_CURRENT_HASH', doc.data().currentHash)
-        store.commit('SET_PREVIOUS_HASH', doc.data().previousHash)
-        store.commit('CURRENT_LEVEL', doc.data().currentLevel)
-        store.commit('SET_PHNO', doc.data().mobno)
-        if (to.fullPath === '/user/enterdetails') {
-          next({
-            path: '/user/dashboard'
-          })
-        } else if (to.fullPath === '/admin') {
-          firebase.firestore().collection('latest').doc('updateMe').get().then((doc) => {
-            if (doc.exists) {
-              next()
-            } else {
-              next({
-                path: '/'
-              })
-            }
-          })
-        } else {
-          next()
-        }
-      } else {
-        console.log(to.fullPath)
-        if (to.fullPath === '/user/enterdetails') {
-            next()
-        } else {
-            next({
-              path: '/user/enterdetails'
-            })
-        }
-      }
-    })
-    .catch((error) => {
-      console.log('error' + error)
-    })
   } else {
-    next()
+    store.commit('SET_LOGO', '/static/images/d_text.svg')
+    if (!requiresAuth) {
+      next()
+    } else if (requiresAuth && !currentUser) {
+      next({
+        path: '/',
+        query: {redirect: to.fullPath}
+      })
+    } else if (currentUser) {
+      firebase.firestore().collection('users').doc(currentUser.uid).get()
+      .then((doc) => {
+        if (doc.exists) {
+          store.commit('SET_CURRENT_HASH', doc.data().currentHash)
+          store.commit('SET_PREVIOUS_HASH', doc.data().previousHash)
+          store.commit('CURRENT_LEVEL', doc.data().currentLevel)
+          store.commit('SET_PHNO', doc.data().mobno)
+          if (to.fullPath === '/user/enterdetails') {
+            next({
+              path: '/user/dashboard'
+            })
+          } else if (to.fullPath === '/admin') {
+            firebase.firestore().collection('latest').doc('updateMe').get().then((doc) => {
+              if (doc.exists) {
+                next()
+              } else {
+                next({
+                  path: '/'
+                })
+              }
+            })
+          } else {
+            next()
+          }
+        } else {
+          console.log(to.fullPath)
+          if (to.fullPath === '/user/enterdetails') {
+              next()
+          } else {
+              next({
+                path: '/user/enterdetails'
+              })
+          }
+        }
+      })
+      .catch((error) => {
+        console.log('error' + error)
+      })
+    } else {
+      next()
+    }
   }
 })
 

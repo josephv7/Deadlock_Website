@@ -4,5 +4,6 @@ export default {
   getCurrentHash: state => state.currentHash,
   getPreviousHash: state => state.previousHash,
   getCurrentLevel: state => state.currentLevel,
-  getPhone: state => state.phno
+  getPhone: state => state.phno,
+  getLogo: state => state.logo
 }

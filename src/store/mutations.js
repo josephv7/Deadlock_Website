@@ -16,5 +16,8 @@ export default {
   },
   SET_PHNO (state, phno) {
     state.phno = phno
+  },
+  SET_LOGO (state, logo) {
+    state.logo = logo
   }
 }

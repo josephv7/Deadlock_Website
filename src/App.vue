@@ -27,7 +27,7 @@
                 <div class="mbr-table-cell">
 
                     <div class="navbar-brand">
-                        <router-link to="/" class="navbar-logo"><img src="/static/images/d_text.svg" alt="Deadlock"></router-link>
+                        <router-link to="/" class="navbar-logo"><img :src="getLogo" alt="Deadlock"></router-link>
                     </div>
 
                 </div>
@@ -69,19 +69,21 @@
 
 <script>
 import firebase from 'firebase'
+import { mapGetters } from 'vuex'
 require('firebase/firestore')
 export default {
   name: 'App',
   data: function () {
     return {
-
+      imagepath: '/static/images/d_text.svg'
     }
   },
   computed: {
     user: function () {
-      console.log(firebase.auth().currentUser)
       return this.$store.getters.getUser
-    }
+    },
+    ...mapGetters([
+      'getLogo'])
   },
   methods: {
     logout: function () {

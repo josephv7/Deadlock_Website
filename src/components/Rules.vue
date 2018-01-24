@@ -111,10 +111,7 @@ export default {
 			return {
 				rules: null
 			}
-		},
-	mounted () {
-		console.log('Entered rules page')
-	}
+		}
 }
 </script>
 <style>
