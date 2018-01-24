@@ -1,6 +1,25 @@
 <template>
-  <div id="app">
+  <div id="app" style="background-color: black;">
+    <vue-particles
+        color="#c13a48"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#c13a48"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+         style="z-index: 0;">
+      </vue-particles>
     <section id="menu-0">
+
     <nav class="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
         <div class="container">
 
@@ -77,6 +96,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#particles-js {
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .user-img {

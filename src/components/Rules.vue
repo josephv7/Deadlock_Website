@@ -1,37 +1,16 @@
 <template>
-	<div style="background-color: black;">
-        <vue-particles
-        color="#c13a48"
-        :particleOpacity="0.7"
-        :particlesNumber="80"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#c13a48"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="3"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
-        style="height:30rem;"
-         >
-      </vue-particles>
-	<section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="position: absolute; top:10%; right:45%;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-xs-center">
-                <h3 class="mbr-section-title display-2">Rules</h3>
-                <div class="lead"><p></p></div>
- </div>
+  <div>
+    <section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-xs-center">
+                    <h3 class="mbr-section-title display-2">Rules</h3>
+                </div>
+            </div>
         </div>
-    </div>
-</section> 
-<section class="engine"></section><section class="mbr-cards mbr-section mbr-section-nopadding mbr-after-navbar" id="features4-3" style="background-color: rgb(255, 255, 255);">
-
-    
+    </section> 
+    <section class="engine"></section>
+    <section class="mbr-cards mbr-section mbr-section-nopadding mbr-after-navbar" id="features4-3" style="background-color: rgb(255, 255, 255);">
 
     <div class="mbr-cards-row row">
         <div class="mbr-cards-col col-xs-12 col-lg-4" style="padding-top: 100px; padding-bottom: 80px;">

@@ -1,23 +1,5 @@
-<template >
-<div style="background-color: black;">
-  <vue-particles
-        color="#c13a48"
-        :particleOpacity="0.7"
-        :particlesNumber="80"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#c13a48"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="3"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
-         >
-      </vue-particles>
+<template  >
+<div>
 <section class="mbr-section mbr-section-hero mbr-section-full mbr-parallax-background mbr-section-with-arrow mbr-after-navbar section-2" id="header1-1">
 
     <div class="mbr-table-cell">
@@ -146,10 +128,13 @@ export default {
 <style>
 
 .section-2 {
-  position: absolute;
-  top:10%;
+   /* position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;  
+  background-size: cover;
+  padding-bottom: 220px;*/
 }
-
 .section-3 {
   background: url('/static/images/13.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;

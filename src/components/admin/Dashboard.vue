@@ -1,34 +1,15 @@
 <template>
-  <div style="background-color: black;">
-        <vue-particles
-        color="#c13a48"
-        :particleOpacity="0.7"
-        :particlesNumber="80"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#c13a48"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="3"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
-        style="height:30rem;"
-         >
-      </vue-particles>
-  <section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8" style="position: absolute; top:10%; right:32%;">
+  <div>
+  <section class="mbr-section article mbr-parallax-background mbr-after-navbar" id="msg-box8-8">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-xs-center">
                 <h3 class="mbr-section-title display-2">Overclock your Brain</h3>
                 <div class="lead"><p></p></div>
- </div>
+          </div>
         </div>
     </div>
-</section> 
+  </section>
 <section class="mbr-section" id="msg-box5-h" style="background-color: rgb(255, 255, 255); padding-top: 25px; padding-bottom: 30rem;">
   <div v-if="adminData.currentHash" class="container">
     <div class="col-md-6 lead">
