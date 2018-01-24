@@ -102,7 +102,8 @@ export default {
   },
   methods: {
       onSubmit: function () {
-        this.adminData.nextHash = sha256(this.adminData.answer + '' + this.adminData.photourl + '' + this.adminData.CurrentHash).toString()
+        var tohash = this.adminData.answer + '' + this.adminData.photourl + '' + this.adminData.currentHash
+        this.adminData.nextHash = sha256(tohash).toString()
         swal('Hashed', this.adminData.nextHash, 'success')
       }
   },

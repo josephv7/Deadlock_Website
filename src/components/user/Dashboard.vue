@@ -117,7 +117,7 @@ require('firebase/firestore')
         firebase.firestore().collection('logs').add({
           UID: this.getUser.uid,
           displayName: this.getUser.displayName,
-          answer: this.answer,
+          answer: this.answer.toLowerCase(),
           currentLevel: parseInt(this.getCurrentLevel),
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           email: this.getUser.email,
