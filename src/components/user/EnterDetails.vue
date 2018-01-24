@@ -23,32 +23,32 @@
 <table class="table table-hover">
   <tr>
     <td class="userdetails_text">Name:</td>
-    <td><input type="text" v-model="displayName" class="form-control" name="fname" readonly="readonly" value=""></td>
+    <td><input required type="text" v-model="displayName" class="form-control" name="fname" readonly="readonly" value=""></td>
   </tr>
 
   <tr>
     <td class="userdetails_text">Email:</td>
-    <td><input type="text" v-model="email" class="form-control" name="email" readonly="readonly" value="" ></td>
+    <td><input required type="text" v-model="email" class="form-control" name="email" readonly="readonly" value="" ></td>
   </tr>
 
   <tr>
-    <td class="userdetails_text">Mobile No:</td><td><input type="text" v-model="mobno" class="form-control" name="mobno"></td>
+    <td required class="userdetails_text">Mobile No:</td><td><input type="text" v-model="mobno" class="form-control" name="mobno"></td>
   </tr>
 
   <tr>
-    <td class="userdetails_text">Address:</td><td><input type="text" v-model="address" class="form-control" name="mobno"></td>
+    <td  required class="userdetails_text">Address:</td><td><input type="text" v-model="address" class="form-control" name="mobno"></td>
   </tr>
 
   <tr v-if="rset">
     <td><label for="sel1" class="userdetails_text">College:</label></td>
-    <td><select v-model="college" class="form-control" name ="college" id="sel1">
+    <td><select required v-model="college" class="form-control" name ="college" id="sel1">
       <option value = "RSET">RSET</option>
       <option value="others">Others</option>
     </select><div id="div1"></div></td>
   </tr>
   <tr v-else>
     <td><label for="sel1" class="userdetails_text">College:</label></td>
-    <td><input type="text" v-model="college" class="form-control" name="college"/></td>
+    <td><input type="text" required v-model="college" class="form-control" name="college"/></td>
   </tr>
 
   <tr>

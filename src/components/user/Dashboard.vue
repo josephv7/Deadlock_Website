@@ -128,7 +128,6 @@ require('firebase/firestore')
       }
     },
     mounted () {
-      console.log('mounted dashboard')
       firebase.firestore().collection('q').doc('questions').collection(this.getCurrentHash).doc(this.getPreviousHash).get().then((doc) => {
           if (doc.data().photoURL) {
             this.question = {

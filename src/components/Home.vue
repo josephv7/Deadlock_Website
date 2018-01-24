@@ -62,8 +62,7 @@ export default {
   name: 'Login',
   data (router) {
     return {
-      loading: '',
-      response: ''
+      loading: ''
     }
   },
   computed: {
@@ -75,50 +74,21 @@ export default {
     signin () {
       var provider = new firebase.auth.GoogleAuthProvider()
       this.toggleLoading()
-      this.resetResponse()
       this.$store.commit('TOGGLE_LOADING')
       this.toggleLoading()
       /* Making API call to authenticate a user */
 
       firebase.auth().signInWithPopup(provider)
         .then((result) => {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          // var token = result.credential.accessToken
-          // The signed-in user info.
-          console.log('user logged in')
           this.$router.replace('/user/dashboard')
-          // firebase.firestore().doc(`users/${result.user.uid}`).get()
-          // .then((doc) => {
-          //   var user = result.user
-          //   if (doc.exists) {
-          //     user.isAdmin = doc.data().isAdmin
-          //     this.$store.commit('SET_USER', user)
-          //     if (doc.data().isAdmin) {
-          //       this.$router.push('/admin')
-          //     } else {
-          //       this.$router.push('/dashboard')
-          //     }
-          //   } else {
-          //     user.isAdmin = false
-          //     this.$store.commit('SET_USER', user)
-          //     this.$router.push('/dashboard')
-          //   }
-          // })
-          // ...
         }).catch((error) => {
-            // Handle Errors here.
           this.$store.commit('TOGGLE_LOADING')
           console.log(error.message)
-          this.response = error.message
           this.toggleLoading()
-            // ...
         })
     },
     toggleLoading () {
       this.loading = (this.loading === '') ? 'loading' : ''
-    },
-    resetResponse () {
-      this.response = ''
     }
   }
 }
