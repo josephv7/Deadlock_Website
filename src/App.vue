@@ -39,8 +39,13 @@
 
                     <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><router-link class="nav-link link" to="/rules">RULES</router-link></li><li class="nav-item dropdown"><router-link class="nav-link link" to="/leaderboard" aria-expanded="false">LEADERBOARD</router-link></li><li class="nav-item dropdown"><a class="nav-link link" href="https://techkshetra18.in/" aria-expanded="false" target="_blank">TECHKSHETRA</a></li>
                       <li class="nav-item dropdown">
+                        <router-link class="nav-link link" to="/user/dashboard" aria-expanded="false">PLAY</router-link>
+                        </li>
+                      <li class="nav-item dropdown">
                         <a v-if="user" class="nav-link btn btn-white btn-white-outline top-button" v-on:click="logout"><img class="user-img" :src="user.photoURL"> LOG OUT</a>
-                        </li></ul>
+                        </li>
+                      
+                      </ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                         <div class="close-icon"></div>
                     </button>

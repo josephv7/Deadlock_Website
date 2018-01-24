@@ -34,7 +34,8 @@ const routes = [
     component: NotFoundView
   }, {
     path: '/admin',
-    component: adminDashboard
+    component: adminDashboard,
+    meta: {requiresAuth: true}
   }
   ]
 

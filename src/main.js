@@ -62,6 +62,16 @@ router.beforeEach((to, from, next) => {
           next({
             path: '/user/dashboard'
           })
+        } else if (to.fullPath === '/admin') {
+          firebase.firestore().collection('latest').doc('updateMe').get().then((doc) => {
+            if (doc.exists) {
+              next()
+            } else {
+              next({
+                path: '/'
+              })
+            }
+          })
         } else {
           next()
         }
