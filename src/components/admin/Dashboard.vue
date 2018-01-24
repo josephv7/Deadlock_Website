@@ -52,6 +52,18 @@
 </div>
 <div class="col-md-6">
   <h1>&nbsp; Logs </h1>
+  <table-component class="table table-hover" v-if="logs !== []" 
+     :data="logs"
+     sort-by="timestamp"
+     sort-order="desc"
+     >
+     <table-column show="displayName" label="Name"></table-column>
+     <table-column show="answer" label="Answer"></table-column>
+     <table-column show="phno" label="Phone" data-type="numeric"></table-column>
+     <table-column show="currentLevel" label="Level" data-type="numeric"></table-column>
+     <table-column show="timestamp" label="Time" :filterable="false" data-type="date:DD/MM/YYYY"></table-column>
+     <table-column show="email" label="EMail"></table-column>
+ </table-component>
 </div>
   </div>
   <div v-else>
@@ -76,7 +88,8 @@ export default {
         photourl: null,
         answer: null,
         nextHash: null
-      }
+      },
+      logs: []
     }
   },
   computed: {
@@ -97,10 +110,40 @@ export default {
     firebase.firestore().collection('latest').doc('updateMe').get().then((doc) => {
       this.adminData.currentHash = doc.data().currentHash
     })
+
+    firebase.firestore().collection('logs').orderBy('timestamp', 'desc').onSnapshot((querySnapshot) => {
+      var logs = []
+      querySnapshot.forEach((doc) => {
+        logs.push({
+          UID: doc.data().UID,
+          displayName: doc.data().displayName,
+          answer: doc.data().answer,
+          currentLevel: doc.data().currentLevel,
+          timestamp: doc.data().timestamp,
+          email: doc.data().email,
+          phno: doc.data().phno
+        })
+      })
+      this.logs = logs
+    })
   }
 }
 </script>
 
 <style>
-  
+  .table-component__filter__field {
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    border: 0px;
+    margin-left: 30rem;
+    box-shadow: none;
+    color: #565656;
+    font-size: 0.875rem;
+    line-height: 1.43;
+    min-height: 3.5em;
+    padding: 0.5em 1.07em 0.5em;
+  }
+  th {
+    color: #C13A48;
+  }
 </style>

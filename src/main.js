@@ -7,14 +7,15 @@ import { sync } from 'vuex-router-sync'
 import store from './store'
 import AppView from './App.vue'
 import VueParticles from 'vue-particles'
-
 import firebase from 'firebase'
-require('firebase/firestore')
+import TableComponent from 'vue-table-component'
 
-Vue.use(VueParticles)
+require('firebase/firestore')
 
 Vue.config.productionTip = false
 
+Vue.use(VueParticles)
+Vue.use(TableComponent)
 Vue.use(VueRouter)
 
 firebase.initializeApp(store.getters.getFirebaseConfig)
@@ -55,6 +56,8 @@ router.beforeEach((to, from, next) => {
       if (doc.exists) {
         store.commit('SET_CURRENT_HASH', doc.data().currentHash)
         store.commit('SET_PREVIOUS_HASH', doc.data().previousHash)
+        store.commit('CURRENT_LEVEL', doc.data().currentLevel)
+        store.commit('SET_PHNO', doc.data().mobno)
         if (to.fullPath === '/user/enterdetails') {
           next({
             path: '/user/dashboard'

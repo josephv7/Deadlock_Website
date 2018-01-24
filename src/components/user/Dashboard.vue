@@ -105,31 +105,43 @@ require('firebase/firestore')
       ...mapGetters([
           'getCurrentHash',
           'getPreviousHash',
-          'getUser'
+          'getUser',
+          'getCurrentLevel',
+          'getPhone'
         ]),
       currentUser: () => firebase.auth().currentUser
     },
     methods: {
       calchas: function () {
         var hash = sha256(this.answer + '' + this.question.photoURL + '' + this.getCurrentHash).toString()
-        firebase.firestore().collection('q').doc('questions').collection(hash).doc(this.getCurrentHash).get().then((doc) => {
+        firebase.firestore().collection('logs').add({
+          UID: this.getUser.uid,
+          displayName: this.getUser.displayName,
+          answer: this.answer,
+          currentLevel: parseInt(this.getCurrentLevel),
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          email: this.getUser.email,
+          phno: parseInt(this.getPhone)
+        }).then((success) => {
+          firebase.firestore().collection('q').doc('questions').collection(hash).doc(this.getCurrentHash).get().then((doc) => {
           if (doc.exists) {
             firebase.firestore().collection('users').doc(this.currentUser.uid).update({
               currentHash: hash,
-              previousHash: this.getCurrentHash
-            }).then((success) => {
-              
-            })
-            swal('Good job!', 'Correct Answer !', 'success')
-            this.$store.commit('SET_PREVIOUS_HASH', this.getCurrentHash)
-            this.$store.commit('SET_CURRENT_HASH', hash)
-            this.question = {
-              photoURL: doc.data().photoURL,
-              previousHash: doc.data().id
+              previousHash: this.getCurrentHash,
+              currentLevel: this.getCurrentLevel + 1
+              }).then((success) => {
+                swal('Good job!', 'Correct Answer !', 'success')
+                this.$store.commit('SET_PREVIOUS_HASH', this.getCurrentHash)
+                this.$store.commit('SET_CURRENT_HASH', hash)
+                this.question = {
+                  photoURL: doc.data().photoURL,
+                  previousHash: doc.data().id
+                }
+              })
+            } else {
+              swal('Sorry', 'Wrong Answer!!', 'error')
             }
-          } else {
-            swal('Sorry', 'Wrong Answer!!', 'error')
-          }
+          })
         })
       }
     },

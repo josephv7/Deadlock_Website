@@ -16,10 +16,12 @@
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "firebase": "^4.9.0",
+    "moment": "^2.20.1",
     "sweetalert": "^2.1.0",
     "vue": "^2.5.2",
     "vue-particles": "^1.0.9",
     "vue-router": "^3.0.1",
+    "vue-table-component": "^1.8.1",
     "vuex": "^3.0.1",
     "vuex-router-sync": "^5.0.0"
   },

@@ -9,5 +9,7 @@ export default {
 	},
 	user: null,
 	currentHash: null,
-	previousHash: null
+	previousHash: null,
+	currentLevel: null,
+	phno: null
 }

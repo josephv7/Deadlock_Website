@@ -10,5 +10,11 @@ export default {
   },
   SET_PREVIOUS_HASH (state, previousHash) {
     state.previousHash = previousHash
+  },
+  CURRENT_LEVEL (state, currentLevel) {
+    state.currentLevel = currentLevel
+  },
+  SET_PHNO (state, phno) {
+    state.phno = phno
   }
 }
