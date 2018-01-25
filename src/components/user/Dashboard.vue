@@ -112,6 +112,7 @@ require('firebase/firestore')
               previousHash: this.getCurrentHash,
               currentLevel: this.getCurrentLevel + 1
               }).then((success) => {
+                this.$store.commit('CURRENT_LEVEL', this.getCurrentLevel + 1)
                 swal('Good job!', 'Correct Answer !', 'success')
                 this.$store.commit('SET_PREVIOUS_HASH', this.getCurrentHash)
                 this.$store.commit('SET_CURRENT_HASH', hash)
