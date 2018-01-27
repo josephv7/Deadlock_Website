@@ -146,6 +146,9 @@ require('firebase/firestore')
             }
             rank = rank + 1
           })
+          if (this.rank === null) {
+            this.rank = rank
+          }
       })
     }
   }
