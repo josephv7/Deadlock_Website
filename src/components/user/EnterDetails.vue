@@ -32,7 +32,7 @@
   </tr>
 
   <tr>
-    <td required class="userdetails_text">Mobile No:</td><td><input type="text" v-model="mobno" class="form-control" name="mobno"></td>
+    <td required class="userdetails_text">Mobile No:</td><td><input type="number" required v-model="mobno" class="form-control" name="mobno"></td>
   </tr>
 
   <tr v-if="rset">
@@ -68,6 +68,7 @@
 
 <script>
 import firebase from 'firebase'
+import swal from 'sweetalert'
 require('firebase/firestore')
   export default {
     name: 'EnterDetails',
@@ -83,18 +84,25 @@ require('firebase/firestore')
     },
     methods: {
       onSubmit: function () {
-        firebase.firestore().collection('users').doc(this.currentUser.uid).set({
-          displayName: this.displayName,
-          email: this.email,
-          mobno: this.mobno,
-          college: this.college,
-          photoURL: this.currentUser.photoURL,
-          currentLevel: 1,
-          currentHash: 'dd4afcb2dcb9a1f9e93348f2c49a9fee3e3a79936ed86760cc15b87be47cbe23',
-          previousHash: '16d63cfb10cbe791c4502c6d4af173462a43785d6cfedfa5e931115e006abd9e'
-        }).then((success) => {
-          this.$router.replace('/user/dashboard')
-        })
+        if (this.mobno === null) {
+          console.log('d')
+          swal('Sorry', 'Mobile number cannot be blank', 'error')
+        } else if (this.mobno.length !== 10) {
+           swal('Sorry', 'Enter a valid Mobile Number', 'error')
+        } else {
+          firebase.firestore().collection('users').doc(this.currentUser.uid).set({
+            displayName: this.displayName,
+            email: this.email,
+            mobno: this.mobno,
+            college: this.college,
+            photoURL: this.currentUser.photoURL,
+            currentLevel: 1,
+            currentHash: 'dd4afcb2dcb9a1f9e93348f2c49a9fee3e3a79936ed86760cc15b87be47cbe23',
+            previousHash: '16d63cfb10cbe791c4502c6d4af173462a43785d6cfedfa5e931115e006abd9e'
+          }).then((success) => {
+            this.$router.replace('/user/dashboard')
+          })
+        }
       }
     },
     mounted () {
