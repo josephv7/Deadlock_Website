@@ -17,8 +17,13 @@
     <form v-on:submit.prevent="onSubmit">
 <table class="table table-hover">
   <tr>
-    <td class="userdetails_text">Photo URL :</td>
-    <td><input type="text" v-model="adminData.photourl" class="form-control" name="fname"  value=""></td>
+    <td class="userdetails_text">Choose File  :</td>
+    <td><div class="fileinput fileinput-new" data-provides="fileinput">
+                    <span class="btn btn-default btn-file chosefile">
+                      <input type="file" @change="onFileChange" />
+                    </span>
+                    <span v-text="filename" class="filemsg"></span>
+                  </div></td>
   </tr>
   <tr>
     <td class="userdetails_text">Answer :</td>
@@ -26,7 +31,7 @@
   </tr>
   <tr>
     <td></td>
-    <td><input type="submit" name="submit" value="Calculate Hash" class="col-xs-offset-2 btn btn-raised ripple-effect btn-primary btn-lg"></td>
+    <td><input type="submit" name="submit" value="Upload Question" class="col-xs-offset-2 btn btn-raised ripple-effect btn-primary btn-lg"></td>
   </tr>
 </table>
 </form>
@@ -60,6 +65,7 @@ import swal from 'sweetalert'
 import { mapGetters } from 'vuex'
 import sha256 from 'crypto-js/sha256'
 require('firebase/firestore')
+require('firebase/storage')
 export default {
   name: 'adminDashboard',
   data: function () {
@@ -68,9 +74,13 @@ export default {
         currentHash: null,
         photourl: null,
         answer: null,
-        nextHash: null
+        nextHash: null,
+        previousHash: null,
+        level: null
       },
-      logs: []
+      logs: [],
+      file: null,
+      filename: null
     }
   },
   computed: {
@@ -83,14 +93,43 @@ export default {
   },
   methods: {
       onSubmit: function () {
-        var tohash = this.adminData.answer + '' + this.adminData.photourl + '' + this.adminData.currentHash
-        this.adminData.nextHash = sha256(tohash).toString()
-        swal('Hashed', this.adminData.nextHash, 'success')
+        var storageRef = firebase.storage().ref().child('deadlock_questions/')
+        storageRef.child(this.filename).put(this.file).then(success => {
+          this.adminData.photourl = success.downloadURL
+          var batch = firebase.firestore().batch()
+          var tohash = this.adminData.answer + '' + this.adminData.photourl + '' + this.adminData.currentHash
+          this.adminData.nextHash = sha256(tohash).toString()
+          batch.update(firebase.firestore().doc(`q/questions/${this.adminData.currentHash}/${this.adminData.previousHash}`), {
+            photoURL: this.adminData.photourl
+          })
+          batch.set(firebase.firestore().doc(`q/questions/${this.adminData.nextHash}/${this.adminData.currentHash}`), {
+            level: parseInt(this.adminData.level) + 1,
+            photoURL: null
+          })
+          batch.set(firebase.firestore().doc('latest/updateMe'), {
+            level: parseInt(this.adminData.level) + 1,
+            currentHash: this.adminData.nextHash,
+            previousHash: this.adminData.currentHash
+          })
+          batch.commit().then(success => {
+            swal('Hashed', 'Uploaded', 'success')
+          })
+        })
+      },
+      onFileChange (e) {
+      var files = e.target.files || e.dataTransfer.files
+      if (!files.length) {
+        return
+      }
+      this.file = files[0]
+      this.filename = this.file.name
       }
   },
   mounted () {
     firebase.firestore().collection('latest').doc('updateMe').get().then((doc) => {
       this.adminData.currentHash = doc.data().currentHash
+      this.adminData.previousHash = doc.data().previousHash
+      this.adminData.level = doc.data().level
     })
 
     firebase.firestore().collection('logs').orderBy('timestamp', 'desc').onSnapshot((querySnapshot) => {
