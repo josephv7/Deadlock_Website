@@ -13,6 +13,10 @@
 <section class="mbr-section" id="msg-box5-h" style="background-color: rgb(255, 255, 255); padding-top: 25px; padding-bottom: 30rem;">
   <div v-if="adminData.currentHash" class="container">
     <div class="col-md-6 lead">
+      <div class="row">
+        <h1>STATS</h1>
+        <p>TOTAL USERS COUNT : {{totalCount}}</p>
+      </div>
       <h1>&nbsp;Upload Question</h1>
     <form v-on:submit.prevent="onSubmit">
 <table class="table table-hover">
@@ -80,7 +84,8 @@ export default {
       },
       logs: [],
       file: null,
-      filename: null
+      filename: null,
+      totalCount: null
     }
   },
   computed: {
@@ -97,7 +102,7 @@ export default {
         storageRef.child(this.filename).put(this.file).then(success => {
           this.adminData.photourl = success.downloadURL
           var batch = firebase.firestore().batch()
-          var tohash = this.adminData.answer + '' + this.adminData.photourl + '' + this.adminData.currentHash
+          var tohash = this.adminData.answer.toLowerCase().replace(/\s/g, '') + '' + this.adminData.photourl + '' + this.adminData.currentHash
           this.adminData.nextHash = sha256(tohash).toString()
           batch.update(firebase.firestore().doc(`q/questions/${this.adminData.currentHash}/${this.adminData.previousHash}`), {
             photoURL: this.adminData.photourl
@@ -146,6 +151,10 @@ export default {
         })
       })
       this.logs = logs
+    })
+
+    firebase.firestore().collection('leaderboard').get().then(snapShot => {
+      this.totalCount = snapShot.size
     })
   }
 }
