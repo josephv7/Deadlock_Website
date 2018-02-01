@@ -118,8 +118,8 @@ export default {
           })
           batch.commit().then(success => {
             swal('Hashed', 'Uploaded', 'success')
-          })
-        })
+          }).catch(err => console.log(err))
+        }).catch(err => console.log(err))
       },
       onFileChange (e) {
       var files = e.target.files || e.dataTransfer.files

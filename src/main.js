@@ -79,6 +79,11 @@ router.beforeEach((to, from, next) => {
                   path: '/'
                 })
               }
+            }).catch(err => {
+              console.log(err)
+              next({
+                path: '/'
+              })
             })
           } else {
             next()
