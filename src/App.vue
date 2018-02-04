@@ -61,7 +61,7 @@
     <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/static/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
     
     <div class="container">
-        <p class="text-xs-center">Copyright (c) 2017 Razorsharp.</p>
+        <p class="text-xs-center">Copyright (c) 2018 Kiran Anto.</p>
     </div>
 </footer>
   </div>

@@ -12,7 +12,7 @@
   </section>
 <section class="mbr-section" id="msg-box5-h" style="background-color: rgb(255, 255, 255); padding-top: 25px; padding-bottom: 30rem;">
   <div v-if="adminData.currentHash" class="container">
-    <div class="col-md-6 lead">
+    <div class="col-md-12 lead">
       <div class="row">
         <h1>STATS</h1>
         <p>TOTAL USERS COUNT : {{totalCount}}</p>
@@ -40,7 +40,14 @@
 </table>
 </form>
 </div>
-<div class="col-md-6">
+<div class="col-md-12 ">
+  <h2>Type Any One...</h2>
+  <div class="row">
+    <div class="col-md-8"> <input type="text" v-model="userName" class=" form-control " placeholder="Username" name="fname"  value=""> </div>
+    <div class="btn btn-lg  btn-primary" v-on:click="toggleUser" >SUBMIT</div>
+ </div>
+</div>
+<div class="col-md-12">
   <h1>&nbsp; Logs </h1>
   <table-component class="table table-hover" v-if="logs !== []" 
      :data="logs"
@@ -85,7 +92,8 @@ export default {
       logs: [],
       file: null,
       filename: null,
-      totalCount: null
+      totalCount: null,
+      userName: null
     }
   },
   computed: {
@@ -118,6 +126,8 @@ export default {
           })
           batch.commit().then(success => {
             swal('Hashed', 'Uploaded', 'success')
+            this.admin.previousHash = this.admin.currentHash
+            this.adminData.currentHash = this.admin.nextHash
           }).catch(err => console.log(err))
         }).catch(err => console.log(err))
       },
@@ -128,6 +138,24 @@ export default {
       }
       this.file = files[0]
       this.filename = this.file.name
+      },
+      toggleUser () {
+        console.log(this.userName)
+            firebase.firestore().collection('logs').where('displayName', '==', this.userName).orderBy('timestamp', 'desc').limit(30).get().then((querySnapshot) => {
+          var logs = []
+          querySnapshot.forEach((doc) => {
+            logs.push({
+              UID: doc.data().UID,
+              displayName: doc.data().displayName,
+              answer: doc.data().answer,
+              currentLevel: doc.data().currentLevel,
+              timestamp: doc.data().timestamp,
+              email: doc.data().email,
+              phno: doc.data().phno
+            })
+          })
+          this.logs = logs
+        })
       }
   },
   mounted () {
@@ -136,8 +164,7 @@ export default {
       this.adminData.previousHash = doc.data().previousHash
       this.adminData.level = doc.data().level
     })
-
-    firebase.firestore().collection('logs').orderBy('timestamp', 'desc').onSnapshot((querySnapshot) => {
+    firebase.firestore().collection('logs').orderBy('timestamp', 'desc').limit(30).get().then((querySnapshot) => {
       var logs = []
       querySnapshot.forEach((doc) => {
         logs.push({
