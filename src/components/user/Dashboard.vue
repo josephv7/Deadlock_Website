@@ -95,6 +95,7 @@ require('firebase/firestore')
     },
     methods: {
       calchas: function () {
+        swal('Lemme ask Admin if the answer is correct. please wait..')
         var hash = sha256(this.ans + '' + this.question.photoURL + '' + this.getCurrentHash).toString()
         firebase.firestore().collection('logs').add({
           UID: this.getUser.uid,
@@ -113,6 +114,7 @@ require('firebase/firestore')
               currentLevel: this.getCurrentLevel + 1
             }).then((success) => {
               swal('Good job!', 'Correct Answer !', 'success').then(success => {
+                this.answer = null
                 this.$store.commit('CURRENT_LEVEL', this.getCurrentLevel + 1)
                 this.$store.commit('SET_PREVIOUS_HASH', this.getCurrentHash)
                 this.$store.commit('SET_CURRENT_HASH', hash)

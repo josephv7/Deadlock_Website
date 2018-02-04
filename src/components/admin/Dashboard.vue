@@ -106,30 +106,38 @@ export default {
   },
   methods: {
       onSubmit: function () {
+        swal('Uploading', 'Uploading the image.. please dont close this', 'success')
         var storageRef = firebase.storage().ref().child('deadlock_questions/')
-        storageRef.child(this.filename).put(this.file).then(success => {
-          this.adminData.photourl = success.downloadURL
-          var batch = firebase.firestore().batch()
-          var tohash = this.adminData.answer.toLowerCase().replace(/\s/g, '') + '' + this.adminData.photourl + '' + this.adminData.currentHash
-          this.adminData.nextHash = sha256(tohash).toString()
-          batch.update(firebase.firestore().doc(`q/questions/${this.adminData.currentHash}/${this.adminData.previousHash}`), {
-            photoURL: this.adminData.photourl
-          })
-          batch.set(firebase.firestore().doc(`q/questions/${this.adminData.nextHash}/${this.adminData.currentHash}`), {
-            level: parseInt(this.adminData.level) + 1,
-            photoURL: null
-          })
-          batch.set(firebase.firestore().doc('latest/updateMe'), {
-            level: parseInt(this.adminData.level) + 1,
-            currentHash: this.adminData.nextHash,
-            previousHash: this.adminData.currentHash
-          })
-          batch.commit().then(success => {
-            swal('Hashed', 'Uploaded', 'success')
-            this.admin.previousHash = this.admin.currentHash
-            this.adminData.currentHash = this.admin.nextHash
+        if (this.file === null) {
+          swal('No Image', 'Please select the image', 'error')
+        } else if (this.adminData.answer === null) {
+          swal('No Answer', 'Please Type in an answer', 'error')
+        } else {
+          storageRef.child(this.filename).put(this.file).then(success => {
+            this.adminData.photourl = success.downloadURL
+             swal('Image Uploaded', 'Please wait for the questions to be set', 'success')
+            var batch = firebase.firestore().batch()
+            var tohash = this.adminData.answer.toLowerCase().replace(/\s/g, '') + '' + this.adminData.photourl + '' + this.adminData.currentHash
+            this.adminData.nextHash = sha256(tohash).toString()
+            batch.update(firebase.firestore().doc(`q/questions/${this.adminData.currentHash}/${this.adminData.previousHash}`), {
+              photoURL: this.adminData.photourl
+            })
+            batch.set(firebase.firestore().doc(`q/questions/${this.adminData.nextHash}/${this.adminData.currentHash}`), {
+              level: parseInt(this.adminData.level) + 1,
+              photoURL: null
+            })
+            batch.set(firebase.firestore().doc('latest/updateMe'), {
+              level: parseInt(this.adminData.level) + 1,
+              currentHash: this.adminData.nextHash,
+              previousHash: this.adminData.currentHash
+            })
+            batch.commit().then(success => {
+              swal('Hashed', 'Uploaded', 'success')
+              this.admin.previousHash = this.admin.currentHash
+              this.adminData.currentHash = this.admin.nextHash
+            }).catch(err => console.log(err))
           }).catch(err => console.log(err))
-        }).catch(err => console.log(err))
+        }
       },
       onFileChange (e) {
       var files = e.target.files || e.dataTransfer.files
@@ -164,6 +172,8 @@ export default {
       this.adminData.previousHash = doc.data().previousHash
       this.adminData.level = doc.data().level
     })
+
+    // firebase.firestore().collection('logs').where('displayName', '==', 'Ann Roy').get().then(q => q.forEach(doc => doc.ref.delete()))
     firebase.firestore().collection('logs').orderBy('timestamp', 'desc').limit(30).get().then((querySnapshot) => {
       var logs = []
       querySnapshot.forEach((doc) => {
