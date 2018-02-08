@@ -95,7 +95,7 @@ require('firebase/firestore')
     },
     methods: {
       calchas: function () {
-        swal('Lemme ask Admin if the answer is correct. please wait..')
+        swal('ആശാനോടു ചോദിക്കട്ടെ ....')
         var hash = sha256(this.ans + '' + this.question.photoURL + '' + this.getCurrentHash).toString()
         firebase.firestore().collection('logs').add({
           UID: this.getUser.uid,
