@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-xs-center">
                 <h3 class="mbr-section-title display-2" style="color: white">FOLLOW US</h3>
-                <div> <a class="btn btn-social" title="Facebook" target="_blank" href="https://www.facebook.com/D4Deadlock"><i class="socicon socicon-facebook"></i></a>&nbsp;&nbsp;<a class="btn btn-social" title="Instagram" target="_blank" href="https://www.instagram.com/abhiyanthriki/"><i class="socicon socicon-instagram"></i></a>      </div>
+                <div> <a class="btn btn-social" title="Facebook" target="_blank" href="https://www.facebook.com/D4Deadlock"><i class="socicon socicon-facebook"></i></a>&nbsp;&nbsp;<a class="btn btn-social" title="Instagram" target="_blank" href="https://www.instagram.com/techkshetra19/"><i class="socicon socicon-instagram"></i></a>      </div>
             </div>
         </div>
     </div>
