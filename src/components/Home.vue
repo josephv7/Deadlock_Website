@@ -36,7 +36,7 @@
 
 <section class="mbr-section-full mbr-parallax-background section-3" id="content5-0">
     <div class="container">
-        <h3 class="mbr-section-title display-2" style="color:#C32E45;">Start playing, and think harder !</h3>
+        <h3 class="mbr-section-title display-2" style="color:#4dc0bf;">Start playing, and think harder !</h3>
         <div class="lead"><p class="display-4" style="color:#ffffff;">An exciting online treasure hunt</p></div>
     </div>
 </section>
