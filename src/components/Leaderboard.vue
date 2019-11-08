@@ -16,7 +16,7 @@
         <div class="row">
           <div class="col-xs-12 col-md-12 table-responsive">
             <table class="table table-hover">
-              <thead style="color: #C32E45;">
+              <thead style="color: #4dc0bf;">
                 <tr><th>Rank</th><th>Name</th><th>College</th><th>Level</th></tr>
               </thead>
               <tbody>

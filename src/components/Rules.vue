@@ -120,6 +120,6 @@ export default {
     }
 
     .card-title {
-        color: #C32E45 !important;
+        color: #4dc0bf !important;
     }
 </style>
