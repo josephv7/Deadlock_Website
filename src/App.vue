@@ -58,7 +58,7 @@
     </section>
     <section class="engine"></section>
     <router-view/>
-    <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/static/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
+    <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style=" background-color:black; padding-top: 1.75rem; padding-bottom: 1.75rem;">
 
     <div class="container">
         <p class="text-xs-center">Copyright (c) 2018 Kiran Anto.</p>

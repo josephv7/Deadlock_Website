@@ -36,8 +36,11 @@
 
 <section class="mbr-section-full mbr-parallax-background section-3" id="content5-0">
     <div class="container">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
         <h3 class="mbr-section-title display-2" style="color:#4dc0bf;">Start playing, and think harder !</h3>
         <div class="lead"><p class="display-4" style="color:#ffffff;">An exciting online treasure hunt</p></div>
+      </div>
     </div>
 </section>
 <section class="mbr-section mbr-section-md-padding mbr-parallax-background section-3  " id="social-buttons2-1">
@@ -105,7 +108,7 @@ export default {
   padding-bottom: 220px;*/
 }
 .section-3 {
-  background: url('/static/images/13.jpg') no-repeat center center fixed;
+  // background: url('/static/images/13.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
