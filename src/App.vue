@@ -37,14 +37,14 @@
                         <div class="hamburger-icon"></div>
                     </button>
 
-                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><router-link class="nav-link link" to="/rules">RULES</router-link></li><li class="nav-item dropdown"><router-link class="nav-link link" to="/leaderboard" aria-expanded="false">LEADERBOARD</router-link></li><li class="nav-item dropdown"><a class="nav-link link" href="https://www.techkshetra.tech/" aria-expanded="false" target="_blank">TECHKSHETRA</a></li>
+                    <ul class="nav-dropdown collapse pull-xs-right nav navbar-nav navbar-toggleable-sm" id="exCollapsingNavbar"><li class="nav-item"><router-link class="nav-link link" to="/rules">RULES</router-link></li><li class="nav-item dropdown"><router-link class="nav-link link" to="/leaderboard" aria-expanded="false">LEADERBOARD</router-link></li>
                       <li v-if="user" class="nav-item dropdown">
                         <router-link class="nav-link link" to="/user/dashboard" aria-expanded="false">PLAY</router-link>
                         </li>
                       <li class="nav-item dropdown">
                         <a v-if="user" class="nav-link btn btn-white btn-white-outline top-button" v-on:click="logout"><img class="user-img" :src="user.photoURL"> LOG OUT</a>
                         </li>
-                      
+
                       </ul>
                     <button hidden="" class="navbar-toggler navbar-close" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                         <div class="close-icon"></div>
@@ -59,7 +59,7 @@
     <section class="engine"></section>
     <router-view/>
     <footer class="mbr-small-footer mbr-section mbr-section-nopadding" id="footer1-d" style="background-image: url(/static/images/footer.jpg); padding-top: 1.75rem; padding-bottom: 1.75rem;">
-    
+
     <div class="container">
         <p class="text-xs-center">Copyright (c) 2018 Kiran Anto.</p>
     </div>

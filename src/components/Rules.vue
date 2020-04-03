@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
     <section class="engine"></section>
     <section class="mbr-cards mbr-section mbr-section-nopadding mbr-after-navbar" id="features4-3" style="background-color: rgb(255, 255, 255);">
 
@@ -21,7 +21,7 @@
                         <h4 class="card-title">Admin is always right.</h4>
                         <h5 class="card-subtitle"></h5>
                         <p class="card-text">He's right above you.</p>
-                        
+
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                         <h4 class="card-title">We suggest you enter FULL NAMES including space.</h4>
                         <h5 class="card-subtitle"></h5>
                         <p class="card-text">Answer is CASE INSENSITIVE.Eg.barton hills,Barton Hills,BARTON HILLS,BaRtOn HilLs are all same</p>
-                        
+
                     </div>
                 </div>
           </div>
@@ -47,20 +47,20 @@
                         <h4 class="card-title">Play fair, the mods will be fair.</h4>
                         <h5 class="card-subtitle"></h5>
                         <p class="card-text">Dare to post answers in forum or any place known to us, be ready to face the consequences..</p>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
+
+
+
     </div>
 </section>
 
 <section class="mbr-cards mbr-section mbr-section-nopadding" id="features4-4" style="background-color: rgb(255, 255, 255);">
 
-    
+
 
     <div class="mbr-cards-row row">
         <div class="mbr-cards-col col-xs-12 col-lg-4" style="padding-top: 80px; padding-bottom: 80px;">
@@ -71,7 +71,7 @@
                         <h4 class="card-title">Google &amp; Wiki they are both our boon and bane!!!!<div><br></div></h4>
                         <h5 class="card-subtitle"></h5>
                         <p class="card-text"></p>
-                        
+
                     </div>
                 </div>
             </div>
@@ -83,8 +83,8 @@
                     <div class="card-block">
                         <h4 class="card-title">Get Clues from our FB page</h4>
                         <h5 class="card-subtitle"></h5>
-                        <p class="card-text">Clues for the levels may be found in page source and on the Facebook page.</p>
-                        
+                        <p class="card-text">Clues for the levels may be found in page source and on the Instagram handle.</p>
+
                     </div>
                 </div>
           </div>
