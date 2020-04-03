@@ -174,7 +174,7 @@ export default {
     })
 
     // firebase.firestore().collection('logs').where('displayName', '==', 'Ann Roy').get().then(q => q.forEach(doc => doc.ref.delete()))
-    firebase.firestore().collection('logs').orderBy('timestamp', 'desc').limit(30).get().then((querySnapshot) => {
+    firebase.firestore().collection('logs').orderBy('timestamp', 'desc').limit(200).get().then((querySnapshot) => {
       var logs = []
       querySnapshot.forEach((doc) => {
         logs.push({
