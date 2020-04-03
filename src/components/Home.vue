@@ -42,8 +42,8 @@
           </div>
           <div class="col-md-6">
             <h3 class="mbr-section-title display-2" style="color:#4dc0bf;">Start playing, and think harder !</h3>
-            <div class="lead"><p class="display-3" style="color:#ffffff;">An exciting online treasure hunt</p></div>
-            <div class="lead"><p class="display-3" style="color:#ffffff;">Fight Safe From Home ! </p></div>
+            <div class="lead"><h4 class="display-3" style="color:#ffffff;">An exciting online treasure hunt</h4></div>
+            <div class="lead"><h4 class="display-3" style="color:#ffffff;">Fight Safe From Home ! </h4></div>
             <div class="lead"><h3 class="display-2" style="color:#4dc0bf;">Coro_nna</h3></div>
           </div>
       </div>
