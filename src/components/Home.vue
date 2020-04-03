@@ -9,7 +9,7 @@
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
                     <div class="mbr-section-title display-1"><img src = "/static/images/d_text.svg" width="50%"/></div><br>
-                    <p class="mbr-section-lead lead">Overclock your brain<br>but never rest, unless you're at the top</p><br>
+                    <p class="mbr-section-lead lead">Overclock your brain<br>but never rest, unless you're at the top</p><br>                    
                     <div class="mbr-section-btn"> </div>
                      <div class="text-center col-md-4 col-sm-offset-4 spacing-logo">
             <!-- login form -->
@@ -36,10 +36,16 @@
 
 <section class="mbr-section-full mbr-parallax-background section-3" id="content5-0">
     <div class="container">
-      <div class="col-md-6"></div>
-      <div class="col-md-6">
-        <h3 class="mbr-section-title display-2" style="color:#4dc0bf;">Start playing, and think harder !</h3>
-        <div class="lead"><p class="display-4" style="color:#ffffff;">An exciting online treasure hunt</p></div>
+      <div class="row align-items-center"> 
+          <div class="col-md-6">
+              <img src ="/static/images/rsetaa.png" class="img-responsive" id="rsetaa" />
+          </div>
+          <div class="col-md-6">
+            <h3 class="mbr-section-title display-2" style="color:#4dc0bf;">Start playing, and think harder !</h3>
+            <div class="lead"><p class="display-3" style="color:#ffffff;">An exciting online treasure hunt</p></div>
+            <div class="lead"><p class="display-3" style="color:#ffffff;">Fight Safe From Home ! </p></div>
+            <div class="lead"><h3 class="display-2" style="color:#4dc0bf;">Coro_nna</h3></div>
+          </div>
       </div>
     </div>
 </section>
@@ -108,7 +114,7 @@ export default {
   padding-bottom: 220px;*/
 }
 .section-3 {
-  // background: url('/static/images/13.jpg') no-repeat center center fixed;
+  background: url('/static/images/13.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -137,4 +143,8 @@ export default {
     color: #fff; }
   .btn-social + .btn {
     margin-left: 0.1rem; }
+#rsetaa{
+  height:100%;
+  width:100%;
+}
 </style>
