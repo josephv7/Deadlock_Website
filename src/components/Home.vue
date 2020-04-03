@@ -9,7 +9,7 @@
                 <div class="mbr-section col-md-10 col-md-offset-1 text-xs-center">
 
                     <div class="mbr-section-title display-1"><img src = "/static/images/d_text.svg" width="50%"/></div><br>
-                    <p class="mbr-section-lead lead">Overclock your brain<br>but never rest, unless you're at the top</p><br>                    
+                    <p class="mbr-section-lead lead">Overclock your brain<br>but never rest, unless you're at the top</p><br>
                     <div class="mbr-section-btn"> </div>
                      <div class="text-center col-md-4 col-sm-offset-4 spacing-logo">
             <!-- login form -->
@@ -36,7 +36,7 @@
 
 <section class="mbr-section-full mbr-parallax-background section-3" id="content5-0">
     <div class="container">
-      <div class="row align-items-center"> 
+      <div class="row align-items-center">
           <div class="col-md-6">
               <img src ="/static/images/rsetaa.png" class="img-responsive" id="rsetaa" />
           </div>
@@ -44,7 +44,7 @@
             <h3 class="mbr-section-title display-2" style="color:#4dc0bf;">Start playing, and think harder !</h3>
             <div class="lead"><h4 class="display-3" style="color:#ffffff;">An exciting online treasure hunt</h4></div>
             <div class="lead"><h4 class="display-3" style="color:#ffffff;">Fight Safe From Home ! </h4></div>
-            <div class="lead"><h3 class="display-2" style="color:#4dc0bf;">Coro_nna</h3></div>
+            <div class="lead"><h2 class="display-2" style="color:#ffffff;">#CORO_NAA</h2></div>
           </div>
       </div>
     </div>
