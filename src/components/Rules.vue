@@ -81,7 +81,7 @@
                 <div class="card cart-block">
                     <div class="card-img iconbox"><i style="padding-left:0px !important;" class="fa fa-question fa-4x" aria-hidden="true"></i></div>
                     <div class="card-block">
-                        <h4 class="card-title">Get Clues from our FB page</h4>
+                        <h4 class="card-title">Get Clues from our Instagram Handle</h4>
                         <h5 class="card-subtitle"></h5>
                         <p class="card-text">Clues for the levels may be found in page source and on the Instagram handle.</p>
 
