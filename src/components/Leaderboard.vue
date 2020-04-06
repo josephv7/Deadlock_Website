@@ -17,11 +17,11 @@
           <div class="col-xs-12 col-md-12 table-responsive">
             <table class="table table-hover">
               <thead style="color: #4dc0bf;">
-                <tr><th>Rank</th><th>Name</th><th>College</th><th>Level</th></tr>
+                <tr><th>Rank</th><th>Name</th><th>Participant Type</th><th>Level</th></tr>
               </thead>
               <tbody>
                 <tr v-for="(lead,key) in leaderboard" v-bind:key="key">
-                  <td>{{key+1}}</td><td>{{lead.name}}</td><td>{{lead.college}}</td><td>{{lead.level}}</td>
+                  <td style="text-align:left">{{key+1}}</td><td style="text-align:left">{{lead.name}}</td><td style="text-align:left">{{lead.college}}</td><td style="text-align:left">{{lead.level}}</td>
                 </tr>
               </tbody>
             </table>
