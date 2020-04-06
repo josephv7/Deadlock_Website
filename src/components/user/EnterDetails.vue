@@ -36,9 +36,11 @@
   </tr>
 
   <tr v-if="rset">
-    <td><label for="sel1" class="userdetails_text">College:</label></td>
+    <td><label for="sel1" class="userdetails_text">Participant Type:</label></td>
     <td><select required v-model="college" class="form-control" name ="college" id="sel1">
-      <option value = "RSET">RSET</option>
+      <option value = "RSET ALUMNI">RSET ALUMNI</option>
+      <option value = "RSET STUDENT">RSET STUDENT</option>
+      <option value = "RSET TEACHER">RSET TEACHER</option>
       <option value="others">Others</option>
     </select><div id="div1"></div></td>
   </tr>
