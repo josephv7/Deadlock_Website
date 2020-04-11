@@ -12,7 +12,7 @@
     </section>
     <section class="mbr-section mbr-section-nopadding mbr-after-navbar" id="content1-b" style="background-color: rgb(255, 255, 255); padding-top: 20px; padding-bottom: 20rem; ">
 
-      <div class="container col-md-offset-2 ">
+      <div class="container ">
         <div class="row">
           <div class="col-xs-12 col-md-12 table-responsive">
             <table class="table table-hover">
